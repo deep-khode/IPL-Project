@@ -175,7 +175,7 @@ $(function() {
     
     if(teamsDetails.length > 0){
         let teamsHTML = '';
-        let teamOptions = '<option value="" selected></option>';
+        let teamOptions = '<option value="" disabled selected>Select your team</option>';
         teamsDetails.forEach((team, index) => {
             let totalPlyer = 0;
             playersDetails.forEach((player) => {

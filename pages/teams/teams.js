@@ -15,7 +15,7 @@ $(function(){
             let totalPlyer = 0;
             let topOrderBatsman = [];
             let topOrderBowler = [];
-            let teamOptions = '<option value="" selected></option>';
+            let teamOptions = '<option value="" disabled selected>Select your team</option>';
             let teamData = teamsDetails.filter((eachTeam) => {
                 teamOptions += `<option value="${eachTeam.shortForm}">${eachTeam.teamName}</option>`
                 return eachTeam.shortForm == team;
