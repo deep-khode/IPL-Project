@@ -55,7 +55,7 @@ $(function(){
                     }
                 }
             });
-
+            document.title = teamData.teamName;
             if(teamData.shortForm == team){
                 teamsHTML += `<tr>
                 <td colspan="2" style="text-align:center;border: none"><img class="logo" src="${teamData.icon}" alt="${teamData.teamName}"/></td>

@@ -34,6 +34,7 @@ $(function(){
                         <th>Role</th>
                         <td>${eachPlayer.description}</td>
                     </tr>`;
+                    document.title = eachPlayer.playerName;
                 }
             });
 
