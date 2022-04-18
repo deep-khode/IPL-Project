@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Teams</title>
+    <link rel="stylesheet" href="../../index.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    <header id="header">
+        <nav id="navBar">
+            <div id="leftNav">
+                <a href="../../index.html" style="margin-right: 3rem;"><img src="https://www.iplt20.com/assets/images/ipl-logo-new-old.png" alt="IPL Logo" width="100"></a>
+                <a href="../../index.html" class="aTag">Home</a>
+                <a href="../../index.html#TeamHeading" class="aTag">Teams</a>
+            </div>
+            
+            <div id="rightNav">
+                <a href="./createPlayer.html" id="createPlayer" title="Create Player" ><button class="button-cstm"><i class="fa fa-user-plus" style="margin-right:2px" aria-hidden="true"></i></button></a>
+                <a href="../teams/createTeam.html" id="createTeam" title="Create Team" ><button class="button-cstm"><i class="fa fa-users" aria-hidden="true"></i></button></a>
+            </div>
+        </nav>
+    </header>
+    <div id="main">
+        <form id="create-player" class="form">
+            <h2 class="create">Create Player</h2>
+            <div class="row">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name" required/>
+            </div>
+            <div class="row">
+                <label for="profilePic">Profile Pic:</label>
+                <input type="text" id="profilePic" name="profilePic" class="form-control" placeholder="Profile Picture URL" required/>
+            </div>
+            <div class="row">
+                <label for="team">Team:</label>
+                <select id="team" name="team" class="form-control" placeholder="Select Team" required></select>
+            </div>
+            <div class="row">
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" class="form-control" placeholder="Enter Price" required/>
+            </div>
+            <div class="row">
+                <label for="units">Price In:</label>
+                <select id="units" name="units" class="form-control" placeholder="Enter Units" required>
+                    <option value="Lac">Lakh</option>
+                    <option value="Cr">Crore</option>
+                </select>
+            </div>
+            <div class="row">
+                <label for="isPlaying">Playing:</label>
+                <select type="text" id="isPlaying" name="isPlaying" class="form-control" placeholder="Select Option" required>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <div class="row">
+                <label for="description">Description:</label>
+                <select type="text" id="description" name="description" class="form-control" placeholder="Select Option" required>
+                    <option value="Batsman">Batsman</option>
+                    <option value="Bowler">Bowler</option>
+                    <option value="All-rounder">All Rounder</option>
+                </select>
+            </div>
+            <div class="row">
+                <button class="button-cstm">Add Player</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript">
+    let teamsDetails = JSON.parse(localStorage.getItem("teamsInfo"));
+    let playerDetails = JSON.parse(localStorage.getItem("playersInfo"));
+    
+    if(teamsDetails.length > 0){
+        let teamsHTML = '';
+        let teamOptions = '';
+        teamsDetails.forEach((team, index) => {
+            teamOptions += `<option value="${team.shortForm}">${team.teamName}</option>`;
+        });
+        $("#team").append(teamOptions);
+    }
+
+    $("#create-player").submit(function(e){
+        e.preventDefault();
+        let temp = {id: playerDetails.length,playerName: $("#name").val(), profileIcon:$("#profilePic").val(), from: $("#team").val(), price: $("#price").val() + ' ' + $("#units").val(), isPlaying: $("#isPlaying").val(), description:$("#description").val(), teamFullName: $("#team option:selected").text()};
+        playerDetails.push(temp);
+        localStorage.setItem("playersInfo", JSON.stringify(playerDetails));  
+        location.href = `./players.html?id=${temp.id}`;
+    });
+
+    const appplyBorder = () => {
+        teamsDetails.forEach((team, index) => {
+            if(team.shortForm == $("#team").val()){
+                $("#create-player").css({border: `3px solid ${team['color-bottom']}`});
+                $(".create").css({color: `${team['color-top']}`});
+            }
+        });
+    }
+    $("#team").change(() => {
+        appplyBorder();
+    });
+    appplyBorder();
+</script>
+</html>

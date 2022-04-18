@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="./teams.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&amp;display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header id="header">
+        <nav id="navBar">
+            <div id="leftNav">
+                <a href="../../index.html" style="margin-right: 3rem;"><img src="https://www.iplt20.com/assets/images/ipl-logo-new-old.png" alt="IPL Logo" width="100"></a>
+                <a href="../../index.html" class="aTag">Home</a>
+                <a href="../../index.html#TeamHeading" class="aTag">Teams</a>
+            </div>
+            
+            <div id="rightNav">
+                <select name="teamSearch" class="form-control" id="teamSearch"></select>
+                <a href="#" id="searchLink" title="Search Players of the Team"><button class="button-cstm"><i class="fa fa-search" aria-hidden="true"></i></button></a>
+                <a href="../players/createPlayer.html" id="createPlayer" title="Create Player" ><button class="button-cstm"><i class="fa fa-user-plus" style="margin-right:2px" aria-hidden="true"></i></button></a>
+                <a href="./createTeam.html" id="createTeam" title="Create Team" ><button class="button-cstm"><i class="fa fa-users" aria-hidden="true"></i></button></a>
+            </div>
+        </nav>
+    </header>
+    <div id="main">
+        <h2 id="TeamHeading">Team Information</h2>
+        <div id="team-details" class="gradient-border">
+            <table>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </div>
+        <h2 id="TeamHeading">Squad Members</h2>
+        <div id="container">
+            <!-- Player Card Goes Here!-->
+        </div>
+    </div>
+</body>
+<script src="./teams.js"></script>
+</html>
